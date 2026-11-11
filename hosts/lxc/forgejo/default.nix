@@ -9,17 +9,8 @@
     ./forgejo.nix
   ];
 
-  networking.firewall.allowedTCPPorts = [
-    22
+  networking.firewall.allowedTCPPorts = config.services.openssh.ports ++ [
     config.services.forgejo.settings.server.HTTP_PORT
+    config.services.forgejo.settings.server.SSH_PORT
   ];
-
-  systemd.network = {
-
-    enable = true;
-
-    networks."10-eth" = {
-      address = [ "2a01:4f8:13a:f801::f30" ];
-    };
-  };
 }

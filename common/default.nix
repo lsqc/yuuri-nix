@@ -10,6 +10,11 @@
 
   system.stateVersion = "26.11";
 
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
   services = {
 
     openssh = {
@@ -22,6 +27,11 @@
     };
 
     resolved.enable = true;
+  };
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 ];
   };
 
   systemd.network = {

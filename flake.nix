@@ -1,0 +1,23 @@
+{
+  description = "A very basic flake";
+
+  inputs = {
+
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    kirikae.url = "git+https://git.sr.ht/~xqtc/kirikae";
+  };
+
+  outputs =
+    inputs@{
+      ...
+    }:
+    {
+      nixosConfigurations = import ./configs.nix inputs;
+    };
+}

@@ -5,6 +5,6 @@ let
 in
 {
   users.users.root = {
-    openssh.authorizedKeys.keys = keys.userKeys.lsqc;
+    openssh.authorizedKeys.keys = keys.userKeys.regular.lsqc ++ keys.userKeys.sk.lsqc;
   };
 }

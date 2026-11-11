@@ -1,10 +1,8 @@
 {
-  modulesPath,
   ...
 }:
 {
   imports = [
-    (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ./caddy.nix
   ];
 

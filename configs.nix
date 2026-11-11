@@ -4,11 +4,14 @@ let
   system = "x86_64-linux";
 
   commonModules = rec {
-    lxc = [
+    all = [
       ./common/default.nix
+      inputs.agenix.nixosModules.default
+    ];
+    lxc = all ++ [
       ./common/lxc.nix
     ];
-    vm = [ ];
+    vm = all ++ [ ];
   };
 
   makeHosts =

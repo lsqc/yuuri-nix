@@ -72,13 +72,22 @@ in
       systems.oauth2 = {
         "forgejo" = {
           displayName = "Forgejo";
-          # imageFile = ../../../assets/kanidm-logos/forgejo-logo.svg;
-          originUrl = "https://git.nya.vodka/user/oauth2/kanidm/callback";
+          imageFile = ../../../assets/icons/forgejo.svg;
+
+          originUrl = "https://git.nya.vodka/user/oauth2/id.nya.vodka/callback";
           originLanding = "https://git.nya.vodka/user/oauth2/kanidm";
+
+          basicSecretFile = config.age.secrets.forgejo-oidc-client-secret.path;
+
           preferShortUsername = true;
 
           scopeMaps = {
             "forgejo-users" = [
+              "openid"
+              "email"
+              "profile"
+            ];
+            "forgejo-admins" = [
               "openid"
               "email"
               "profile"

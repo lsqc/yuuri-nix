@@ -1,5 +1,4 @@
 {
-  config,
   hostConfig,
   ...
 }:
@@ -17,7 +16,12 @@
     forgejo = {
       enable = true;
       settings = {
-        service.DISABLE_REGISTRATION = true;
+        service = {
+          DISABLE_REGISTRATION = true;
+          ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
+          ENABLE_INTERNAL_SIGNIN = false;
+          SHOW_REGISTRATION_BUTTON = false;
+        };
         server = rec {
 
           HTTP_ADDR = hostConfig.ip;

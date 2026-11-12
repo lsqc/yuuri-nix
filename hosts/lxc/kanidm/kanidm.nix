@@ -5,29 +5,45 @@
   ...
 }:
 
+let
+  domain = "id.nya.vodka";
+in
 {
+  security.acme = {
+    acceptTerms = true;
+    certs."${domain}" = {
+      group = "kanidm";
+      webroot = "/var/lib/acme/acme-challenge";
+    };
+  };
+
   services.kanidm = {
-    package = pkgs.nixpkgs.kanidmWithSecretProvisioning_1_12;
+    package = pkgs.kanidmWithSecretProvisioning_1_12;
 
     server = {
       enable = true;
       settings = {
 
-        domain = "id.nya.vodka";
-        origin = "https://id.nya.vodka";
+        inherit domain;
+        origin = "https://${domain}";
         bindaddress = "[${hostConfig.ip}]:8443";
+
+        tls_chain = "/var/lib/acme/${domain}/fullchain.pem";
+        tls_key = "/var/lib/acme/${domain}/key.pem";
 
         log_level = "info";
       };
     };
 
     provision = {
+      instanceUrl = "https://[${hostConfig.ip}]:8443";
+      acceptInvalidCerts = true;
+      enable = true;
+      autoRemove = true;
 
       adminPasswordFile = config.age.secrets.kanidm-admin-password.path;
       idmAdminPasswordFile = config.age.secrets.kanidm-idm-admin-password.path;
 
-      enable = true;
-      autoRemove = true;
       persons = {
         "lsqc" = {
           displayName = "lsqc";
@@ -56,7 +72,7 @@
       systems.oauth2 = {
         "forgejo" = {
           displayName = "Forgejo";
-          imageFile = ../../../assets/kanidm-logos/forgejo-logo.svg;
+          # imageFile = ../../../assets/kanidm-logos/forgejo-logo.svg;
           originUrl = "https://git.nya.vodka/user/oauth2/kanidm/callback";
           originLanding = "https://git.nya.vodka/user/oauth2/kanidm";
           preferShortUsername = true;

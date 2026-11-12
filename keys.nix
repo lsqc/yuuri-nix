@@ -12,7 +12,7 @@
   };
 
   hostKeys = {
-    kanidm = [ ];
+    kanidm = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFzkGcErpXNzmQU76bjErIZfteEBiWqtg3Kmibo3R/yY" ];
     forgejo = [ ];
   };
 }

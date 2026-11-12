@@ -75,7 +75,7 @@ in
           imageFile = ../../../assets/icons/forgejo.svg;
 
           originUrl = "https://git.nya.vodka/user/oauth2/id.nya.vodka/callback";
-          originLanding = "https://git.nya.vodka/user/oauth2/kanidm";
+          originLanding = "https://git.nya.vodka/user/oauth2/id.nya.vodka";
 
           basicSecretFile = config.age.secrets.forgejo-oidc-client-secret.path;
 

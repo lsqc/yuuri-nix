@@ -14,13 +14,23 @@
 
     forgejo = {
       enable = true;
+
       settings = {
         service = {
-          DISABLE_REGISTRATION = true;
+
+          DISABLE_REGISTRATION = false;
           ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
           ENABLE_INTERNAL_SIGNIN = false;
           SHOW_REGISTRATION_BUTTON = false;
+
         };
+
+        oauth2_client = {
+          ENABLE_AUTO_REGISTRATION = true;
+          USERNAME = "preferred_username";
+          ACCOUNT_LINKING = "auto";
+        };
+
         server = rec {
 
           HTTP_ADDR = hostConfig.ip;

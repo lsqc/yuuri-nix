@@ -73,24 +73,30 @@ in
         "forgejo" = {
           displayName = "Forgejo";
           imageFile = ../../../assets/icons/forgejo.svg;
+          preferShortUsername = true;
 
           originUrl = "https://git.nya.vodka/user/oauth2/id.nya.vodka/callback";
           originLanding = "https://git.nya.vodka/user/oauth2/id.nya.vodka";
 
           basicSecretFile = config.age.secrets.forgejo-oidc-client-secret.path;
 
-          preferShortUsername = true;
+          claimMaps.forgejo_groups = {
+            joinType = "array";
+            valuesByGroup."forgejo-admins" = [ "admin" ];
+          };
 
           scopeMaps = {
             "forgejo-users" = [
               "openid"
               "email"
               "profile"
+              "groups"
             ];
             "forgejo-admins" = [
               "openid"
               "email"
               "profile"
+              "groups"
             ];
           };
         };

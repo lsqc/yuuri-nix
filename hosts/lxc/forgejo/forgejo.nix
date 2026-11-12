@@ -11,7 +11,6 @@
   };
 
   services = {
-    openssh.ports = [ 2222 ];
 
     forgejo = {
       enable = true;
@@ -32,7 +31,7 @@
           START_SSH_SERVER = true;
           SSH_DOMAIN = "git.nya.vodka";
           SSH_LISTEN_HOST = hostConfig.ip;
-          SSH_PORT = 22;
+          SSH_PORT = 2222;
         };
       };
     };

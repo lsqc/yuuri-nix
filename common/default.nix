@@ -4,6 +4,10 @@
   hosts,
   ...
 }:
+
+let
+  prefixes = import ./prefixes.nix;
+in
 {
 
   imports = [ ./users.nix ];
@@ -43,6 +47,15 @@
       linkConfig.RequiredForOnline = "routable";
 
       address = [ hosts.${type}.${hostName}.ip ];
+
+      routes = [
+        {
+          Destination = "${prefixes.nat64.cidr}";
+          Gateway = "${prefixes.services.literal}::10";
+          Metric = 100;
+        }
+      ];
+
       dns = [
         hosts.other.resolver.ip
         "2620:fe::fe"

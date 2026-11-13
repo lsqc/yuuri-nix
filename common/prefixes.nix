@@ -8,8 +8,9 @@ rec {
     literal = "${base.literal}01";
     cidr = "${literal}::/64";
   };
+
   nat64 = rec {
-    literal = "${base.literal}00:64:ff9b";
+    literal = "${base.literal}01:64";
     cidr = "${literal}::/96";
   };
 }

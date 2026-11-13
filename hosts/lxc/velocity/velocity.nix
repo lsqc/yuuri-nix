@@ -16,7 +16,7 @@
     servers.velocity = {
       enable = true;
 
-      jvmOpts = "-Xmx1G -Xms512M";
+      jvmOpts = "-Xmx1G -Xms512M -Djava.net.preferIPv6Addresses=true";
       package = pkgs.velocity;
 
       symlinks = {

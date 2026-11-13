@@ -14,6 +14,12 @@ let
     vm = all ++ [ ];
   };
 
+  hostModules = {
+    velocity = [
+      inputs.nix-minecraft.nixosModules.minecraft-servers
+    ];
+  };
+
   makeHosts =
     with inputs.nixpkgs.lib;
     type:
@@ -22,9 +28,12 @@ let
 
       nixosSystem {
         inherit system;
-        modules = commonModules.${type} ++ [
-          ./hosts/${type}/${host}
-        ];
+        modules =
+          commonModules.${type}
+          ++ (hostModules.${host} or [ ])
+          ++ [
+            ./hosts/${type}/${host}
+          ];
         specialArgs = {
           inherit
             inputs

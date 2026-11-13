@@ -20,6 +20,12 @@ in
     kanidm = {
       ip = "${prefixes.services.literal}::41d";
     };
+    velocity = {
+      ip = "${prefixes.services.literal}::40";
+    };
+    minecraft-create = {
+      ip = "${prefixes.services.literal}::41";
+    };
   };
 
   vm = { };

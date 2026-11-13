@@ -11,6 +11,9 @@
     };
 
     kirikae.url = "git+https://git.sr.ht/~xqtc/kirikae";
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nix-minecraft-folia.url = "github:viceebun/nix-minecraft-folia";
   };
 
   outputs =

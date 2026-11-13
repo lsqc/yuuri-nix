@@ -22,5 +22,8 @@
     }:
     {
       nixosConfigurations = import ./configs.nix inputs;
+      kirikae = {
+        hosts = import ./kirikae.nix inputs;
+      };
     };
 }

@@ -6,6 +6,9 @@ in
     resolver = {
       ip = "${prefixes.services.literal}::10";
     };
+    minecraft-create = {
+      ip = "${prefixes.services.literal}::41";
+    };
   };
 
   lxc = {
@@ -22,9 +25,6 @@ in
     };
     velocity = {
       ip = "${prefixes.services.literal}::40";
-    };
-    minecraft-create = {
-      ip = "${prefixes.services.literal}::41";
     };
   };
 

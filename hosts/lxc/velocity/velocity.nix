@@ -56,7 +56,7 @@
         player-info-forwarding-mode = "legacy";
 
         servers = {
-          create = "[${hosts.lxc.minecraft-create.ip}]:25565";
+          create = "[${hosts.other.minecraft-create.ip}]:25565";
           try = [ "create" ];
         };
 

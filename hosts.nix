@@ -23,8 +23,13 @@ in
     kanidm = {
       ip = "${prefixes.services.literal}::41d";
     };
+
     velocity = {
       ip = "${prefixes.services.literal}::40";
+    };
+
+    prometheus = {
+      ip = "${prefixes.services.literal}::37";
     };
   };
 

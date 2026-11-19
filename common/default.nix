@@ -10,7 +10,10 @@ let
 in
 {
 
-  imports = [ ./users.nix ];
+  imports = [
+    ./users.nix
+    ./prometheus.nix
+  ];
 
   system.stateVersion = "26.11";
 

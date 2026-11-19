@@ -14,5 +14,6 @@
   hostKeys = {
     kanidm = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFzkGcErpXNzmQU76bjErIZfteEBiWqtg3Kmibo3R/yY" ];
     forgejo = [ ];
+    prometheus = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTAvxql5h8K9RPnXK9zXIu7KV/0/8/Kh5Ijf4Q/e2li" ];
   };
 }

@@ -13,4 +13,11 @@ in
   "kanidm-admin-password.age" = {
     publicKeys = keys.userKeys.regular.lsqc ++ keys.hostKeys.kanidm;
   };
+  "grafana-oidc-client-secret.age" = {
+    publicKeys = keys.userKeys.regular.lsqc ++ keys.hostKeys.prometheus ++ keys.hostKeys.kanidm;
+  };
+
+  "grafana-secret-key.age" = {
+    publicKeys = keys.userKeys.regular.lsqc ++ keys.hostKeys.prometheus;
+  };
 }

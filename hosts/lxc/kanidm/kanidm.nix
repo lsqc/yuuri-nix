@@ -1,4 +1,5 @@
 {
+  inputs,
   hostConfig,
   pkgs,
   config,
@@ -51,9 +52,13 @@ in
         };
       };
 
-      groups = {
-        "forgejo-admins" = {
+      groups = rec {
+        "admins" = {
           members = [ "lsqc" ];
+        };
+
+        "forgejo-admins" = {
+          members = admins.members;
         };
 
         "forgejo-users" = {
@@ -65,7 +70,7 @@ in
         };
 
         "grafana-admins" = {
-          members = [ "lsqc" ];
+          members = admins.members;
         };
       };
 
@@ -75,8 +80,8 @@ in
           imageFile = ../../../assets/icons/forgejo.svg;
           preferShortUsername = true;
 
-          originUrl = "https://git.nya.vodka/user/oauth2/id.nya.vodka/callback";
-          originLanding = "https://git.nya.vodka/user/oauth2/id.nya.vodka";
+          originUrl = "${inputs.self.nixosConfigurations.forgejo.config.services.forgejo.settings.server.ROOT_URL}/user/oauth2/id.nya.vodka/callback";
+          originLanding = "${inputs.self.nixosConfigurations.forgejo.config.services.forgejo.settings.server.ROOT_URL}/user/oauth2/id.nya.vodka";
 
           basicSecretFile = config.age.secrets.forgejo-oidc-client-secret.path;
 
@@ -100,6 +105,32 @@ in
             ];
           };
         };
+        "grafana" = {
+          displayName = "Grafana";
+          imageFile = ../../../assets/icons/grafana.svg;
+          preferShortUsername = true;
+
+          originUrl = "${inputs.self.nixosConfigurations.prometheus.config.services.grafana.settings.server.root_url}/login/generic_oauth";
+          originLanding = "${inputs.self.nixosConfigurations.prometheus.config.services.grafana.settings.server.root_url
+          }";
+
+          basicSecretFile = config.age.secrets.grafana-oidc-client-secret.path;
+
+          scopeMaps = {
+            "grafana-users" = [
+              "openid"
+              "email"
+              "profile"
+              "groups"
+            ];
+            "grafana-admins" = [
+              "openid"
+              "email"
+              "profile"
+              "groups"
+            ];
+          };
+        };
       };
     };
   };
@@ -113,6 +144,11 @@ in
       forgejo-oidc-client-secret = {
         inherit owner group;
         file = ../../../secrets/forgejo-oidc-client-secret.age;
+        mode = "0400";
+      };
+      grafana-oidc-client-secret = {
+        inherit owner group;
+        file = ../../../secrets/grafana-oidc-client-secret.age;
         mode = "0400";
       };
 

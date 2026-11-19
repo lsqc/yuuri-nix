@@ -3,6 +3,13 @@ let
   hosts = import ./hosts.nix;
   system = "x86_64-linux";
 
+  opts = {
+    kanidm = rec {
+      domain = "id.nya.vodka";
+      url = "https://${domain}";
+    };
+  };
+
   commonModules = rec {
     all = [
       ./common/default.nix
@@ -41,6 +48,7 @@ let
             host
             type
             hostConfig
+            opts
             ;
           hostName = host;
         };

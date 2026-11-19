@@ -22,7 +22,6 @@
           ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
           ENABLE_INTERNAL_SIGNIN = false;
           SHOW_REGISTRATION_BUTTON = false;
-
         };
 
         oauth2_client = {

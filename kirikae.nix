@@ -4,7 +4,7 @@ let
   makeHosts =
     type:
     builtins.mapAttrs (
-      _: hostConfig: {
+      host: hostConfig: {
         targetHost = hostConfig.ip;
         targetUser = hostConfig.targetUser or "root";
         targetPort = hostConfig.targetPort or 22;

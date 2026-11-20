@@ -1,4 +1,9 @@
-{ inputs, hosts, ... }:
+{
+  hostConfig,
+  inputs,
+  hosts,
+  ...
+}:
 
 let
   handle-logo = path: ''
@@ -12,7 +17,17 @@ in
 {
   services.caddy = {
     enable = true;
+    globalConfig = ''
+      metrics
+    '';
+
     virtualHosts = {
+      ":6666" = {
+        extraConfig = ''
+          bind [${hostConfig.ip}]
+          metrics
+        '';
+      };
       "git.nya.vodka" = {
         extraConfig = ''
           handle {

@@ -88,6 +88,18 @@
         hash = "sha256-5Y3cXcU11MkB+U2pZIvD49Wue2946Y4YW86LKJlhzqM=";
       };
     };
+    "grafana-dashboards/caddy.json".text =
+      builtins.replaceStrings [ "\${DS_PROMETHEUS}" ] [ "prometheus" ]
+        (
+          builtins.readFile (
+            pkgs.fetchurl {
+              name = "caddy.json";
+              url = "https://grafana.com/api/dashboards/22870/revisions/3/download";
+              hash = "sha256-T/oImuRQrEGWLlaaMnBVNFNeAoKR1j1IiDoAlGmYnPU=";
+            }
+          )
+        );
+
     "grafana-dashboards/frr.json".text =
       builtins.replaceStrings [ "\${DS_PROMETHEUS}" ] [ "prometheus" ]
         (

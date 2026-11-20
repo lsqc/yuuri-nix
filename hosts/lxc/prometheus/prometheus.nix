@@ -26,6 +26,17 @@
           }
         ];
       }
+      {
+        job_name = "caddy";
+        metrics_path = "/metrics";
+        static_configs = [
+          {
+            targets = [
+              "[${hosts.lxc.caddy.ip}]:6666"
+            ];
+          }
+        ];
+      }
     ];
   };
 }

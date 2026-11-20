@@ -1,4 +1,5 @@
 {
+  opts,
   inputs,
   hostConfig,
   pkgs,
@@ -7,7 +8,7 @@
 }:
 
 let
-  domain = "id.nya.vodka";
+  domain = opts.kanidm.domain;
 in
 {
   security.acme = {

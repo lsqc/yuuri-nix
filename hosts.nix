@@ -6,8 +6,13 @@ in
     resolver = {
       ip = "${prefixes.services.literal}::10";
     };
+
     minecraft-create = {
       ip = "${prefixes.services.literal}::41";
+    };
+
+    dn42 = {
+      ip = "${prefixes.services.literal}::d42";
     };
   };
 

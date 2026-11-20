@@ -1,4 +1,5 @@
 {
+  lib,
   type,
   hostName,
   hosts,
@@ -7,6 +8,7 @@
 
 let
   prefixes = import ./prefixes.nix;
+  hostList = h: lib.mapAttrs' (host: hostConfig: lib.nameValuePair hostConfig.ip [ host ]) h;
 in
 {
 
@@ -36,9 +38,12 @@ in
     resolved.enable = true;
   };
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 22 ];
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 ];
+    };
+    hosts = hostList hosts.lxc // hostList hosts.vm;
   };
 
   systemd.network = {

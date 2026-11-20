@@ -58,6 +58,7 @@
 
         datasources = [
           {
+            uid = "prometheus";
             name = "prometheus";
             type = "prometheus";
             url = "http://[${hostConfig.ip}]:9090";
@@ -65,6 +66,7 @@
           }
         ];
       };
+
       dashboards.settings = {
         apiVersion = 1;
 
@@ -86,6 +88,17 @@
         hash = "sha256-5Y3cXcU11MkB+U2pZIvD49Wue2946Y4YW86LKJlhzqM=";
       };
     };
+    "grafana-dashboards/frr.json".text =
+      builtins.replaceStrings [ "\${DS_PROMETHEUS}" ] [ "prometheus" ]
+        (
+          builtins.readFile (
+            pkgs.fetchurl {
+              name = "frr.json";
+              url = "https://grafana.com/api/dashboards/22943/revisions/3/download";
+              hash = "sha256-us65hrqkoYygdQvIP6ss0Y0EDCm26hILVY/ZTyv9dao=";
+            }
+          )
+        );
   };
 
   age.secrets = {

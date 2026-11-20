@@ -43,7 +43,7 @@ in
       enable = true;
       allowedTCPPorts = [ 22 ];
     };
-    hosts = hostList hosts.lxc // hostList hosts.vm;
+    hosts = hostList hosts.lxc // hostList hosts.vm // hostList hosts.other;
   };
 
   systemd.network = {

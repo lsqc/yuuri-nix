@@ -1,7 +1,5 @@
 {
   hostConfig,
-  lib,
-  config,
   ...
 }:
 {

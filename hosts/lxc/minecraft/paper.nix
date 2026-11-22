@@ -19,7 +19,7 @@ in
     servers.paper = {
       enable = true;
 
-      jvmOpts = "-Xmx16G -Xms1G -Djava.net.preferIPv6Addresses=true";
+      jvmOpts = "-Xmx16G -Xms1G -Djava.net.preferIPv6Addresses=true -Djava.net.preferIPv4Stack=false";
       package = pkgs.paperServers."paper-26_3";
 
       inherit operators;

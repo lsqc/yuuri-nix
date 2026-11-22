@@ -45,19 +45,18 @@
         config-version = "2.8";
         bind = "[${hostConfig.ip}]:25565";
 
-        motd = "velocity proxy";
+        motd = "<gradient:#55ffff:#5555ff><bold>Velocity Proxy</bold></gradient>\n<light_purple><bold>:3</bold></light_purple>";
         show-max-players = 1000;
 
-        ping-passthrough = "all";
+        # ping-passthrough = "all";
 
         online-mode = true;
-        force-key-authentication = true;
 
         player-info-forwarding-mode = "legacy";
 
         servers = {
-          create = "[${hosts.other.minecraft-create.ip}]:25565";
-          try = [ "create" ];
+          paper = "[${hosts.lxc.minecraft.ip}]:25565";
+          try = [ "paper" ];
         };
 
         forced-hosts = { };

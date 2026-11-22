@@ -25,6 +25,9 @@ let
     velocity = [
       inputs.nix-minecraft.nixosModules.minecraft-servers
     ];
+    minecraft = [
+      inputs.nix-minecraft.nixosModules.minecraft-servers
+    ];
   };
 
   makeHosts =

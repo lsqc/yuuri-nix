@@ -7,10 +7,6 @@ in
       ip = "${prefixes.services.literal}::10";
     };
 
-    minecraft-create = {
-      ip = "${prefixes.services.literal}::41";
-    };
-
     dn42 = {
       ip = "${prefixes.services.literal}::d42";
     };
@@ -35,6 +31,10 @@ in
 
     prometheus = {
       ip = "${prefixes.services.literal}::37";
+    };
+
+    minecraft = {
+      ip = "${prefixes.services.literal}::41";
     };
   };
 

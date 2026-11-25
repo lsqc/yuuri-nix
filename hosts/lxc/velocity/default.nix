@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -8,4 +8,6 @@
   nixpkgs.overlays = [
     inputs.nix-minecraft.overlay
   ];
+
+  environment.systemPackages = [ pkgs.tmux ];
 }

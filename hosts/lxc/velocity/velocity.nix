@@ -43,7 +43,7 @@
 
       files."velocity.toml".value = {
         config-version = "2.8";
-        bind = "[${hostConfig.ip}]:25565";
+        bind = "[${hostConfig.ip}]:44412";
 
         motd = "<gradient:#55ffff:#5555ff><bold>Velocity Proxy</bold></gradient>\n<light_purple><bold>:3</bold></light_purple>";
         show-max-players = 1000;
@@ -56,7 +56,11 @@
 
         servers = {
           paper = "[${hosts.lxc.minecraft.ip}]:25565";
-          try = [ "paper" ];
+          create = "[${hosts.other.create.ip}]:8008";
+          try = [
+            "create"
+            "paper"
+          ];
         };
 
         forced-hosts = { };

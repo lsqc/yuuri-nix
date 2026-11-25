@@ -10,6 +10,10 @@ in
     dn42 = {
       ip = "${prefixes.services.literal}::d42";
     };
+
+    create = {
+      ip = "${prefixes.services.literal}::42";
+    };
   };
 
   lxc = {

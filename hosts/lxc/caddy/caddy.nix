@@ -6,6 +6,15 @@
 }:
 
 let
+  prefixes = import ../../../common/prefixes.nix;
+
+  ip-whitelist = ''
+    @blocked not remote_ip ${prefixes.base.cidr}
+    handle @blocked {
+      respond "Forbidden" 403
+    }
+  '';
+
   handle-logo = path: ''
     handle ${path} {
       root * ${../../../assets}
@@ -68,6 +77,7 @@ in
 
       "jellyfin.yuuri.nya.vodka" = {
         extraConfig = ''
+          ${ip-whitelist}
           handle {
             reverse_proxy http://[${hosts.lxc.jellyfin.ip}]:8096
           }

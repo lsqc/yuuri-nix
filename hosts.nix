@@ -40,6 +40,10 @@ in
     minecraft = {
       ip = "${prefixes.services.literal}::41";
     };
+
+    jellyfin = {
+      ip = "${prefixes.services.literal}::31f1";
+    };
   };
 
   vm = { };

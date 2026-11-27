@@ -28,6 +28,7 @@ in
           metrics
         '';
       };
+
       "git.nya.vodka" = {
         extraConfig = ''
           handle {
@@ -37,6 +38,7 @@ in
           ${handle-logo "/assets/img/logo.svg"}
         '';
       };
+
       "id.nya.vodka" = {
         extraConfig = ''
           handle {
@@ -60,6 +62,14 @@ in
         extraConfig = ''
           handle {
             reverse_proxy http://[${hosts.lxc.prometheus.ip}]:${toString inputs.self.nixosConfigurations.prometheus.config.services.grafana.settings.server.http_port}
+          }
+        '';
+      };
+
+      "jellyfin.yuuri.nya.vodka" = {
+        extraConfig = ''
+          handle {
+            reverse_proxy http://[${hosts.lxc.jellyfin.ip}]:8096
           }
         '';
       };

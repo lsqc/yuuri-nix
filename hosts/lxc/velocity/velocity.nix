@@ -21,13 +21,13 @@
 
       symlinks = {
         "plugins/viaversion.jar" = builtins.fetchurl {
-          url = "https://cdn.modrinth.com/data/P1OZGk5p/versions/ZH8459B6/ViaVersion-5.11.0.jar?mr_download_reason=standalone&mr_game_version=26.2&mr_loader=velocity";
+          url = "https://cdn.modrinth.com/data/P1OZGk5p/versions/9iJiFoFk/ViaVersion-5.12.4-SNAPSHOT.jar?mr_download_reason=standalone&mr_game_version=26.3&mr_loader=velocity";
           name = "velocity.jar";
           sha256 = "0w1glnjyhy279631pg8bfshfpgm2x6lvfazfbs7j6x76wg47dnw9";
         };
 
         "plugins/viabackwards.jar" = builtins.fetchurl {
-          url = "https://cdn.modrinth.com/data/NpvuJQoq/versions/hYhg2QBT/ViaBackwards-5.11.0.jar?mr_download_reason=standalone&mr_game_version=26.2&mr_loader=velocity";
+          url = "https://cdn.modrinth.com/data/NpvuJQoq/versions/Z5xofDU6/ViaBackwards-5.12.3.jar?mr_download_reason=standalone&mr_game_version=26.3&mr_loader=velocity";
           name = "viabackwards.jar";
           sha256 = "1p7c7vrqycldy13x0pw2lyfil82yxy3p9zhp978s1jc4sxcml221";
         };
